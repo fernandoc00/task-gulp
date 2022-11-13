@@ -1,0 +1,391 @@
+
+@import 'mixins';
+
+.header-fixed{
+
+    margin: auto;
+    font-family: "apercu",sans-serif;
+    font-size: $text-size-primary;
+    font-weight: 300;
+    background: $bg-primary;
+    color: $color-primary;
+    line-height: 200%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+
+        #header{
+            position: sticky;
+            top: 0;
+            z-index: 4;
+            background-color: $bg-primary;
+            
+            @include incluirInner;
+
+                .header-main{
+                    $text-header: 14px;
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: $header-height;
+                    font-size: $text-header;
+
+                    .header-main__logo{
+                        color: $color-link;
+                    }
+
+                    .header-search {
+                        position: relative;
+                        flex: 1 !important;
+                        margin-left: 12px;
+                        z-index: 3;
+                            $color-primary: #7a7a7a;
+                            $search-color-light: #fff;
+                            $search-results-fs: 0.75em;
+                            color: $color-primary;
+                            overflow: visible;
+                        }
+                        .header-search__overlay{
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0,0,0,.4);
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: all .3s;
+                        }
+
+                        .search-form{
+
+
+                            .search-form__field{
+                                display: flex;
+                                flex: 1 !important;
+                                height: 100%;
+                                padding-left: 20px;
+                                border-top-left-radius: $rounded-normal;
+                                border-bottom-left-radius: $rounded-normal;
+
+                                .search-form__button{
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 0;
+                                    background: transparent;
+                                    border: none;
+                                    cursor: pointer;
+
+                                    svg {
+                                        fill: #a7a7a7;
+                                    }
+                                }
+
+                                .search-form__input {
+                                    position: relative;
+                                    flex: 1;
+                                    height: 100%;
+                                    background: transparent;
+                                    border: none;
+                                    padding-left: 10px;
+                                    font-size: $text-header;
+                                    color: #000;
+                                }
+                                
+                            }
+
+                            
+
+                                .search-form__separator {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    margin: 0 20px;
+                                    font-size: 11px;
+                                }
+
+                                    
+                                    .search-dropdown__arrow {
+                                        position: absolute;
+                                        top: 50%;
+                                        right: 0;
+                                        transform: translateY(-50%);
+                                        z-index: 2;
+                                        transition: transform .3s;
+                                    }
+
+                                    .search-dropdown__selected {
+                                        position: relative;
+                                        display: flex;
+                                        align-items: center;
+                                        padding-right: 30px;
+                                        font-weight: 500;
+                                        z-index: 2;
+                                    }
+
+                                    .search-dropdown__options {
+                                        position: absolute;
+                                        top: calc(100% - 40px);
+                                        width: calc(100% + 28px);
+                                        padding: 40px 0 10px 0;
+                                        background: $bg-secondary;
+                                        border-radius: $rounded-normal;
+                                        color: $color-white;
+                                        transform: translateX(-8px);
+                                        overflow: hidden;
+                                        opacity: 0;
+                                        visibility: hidden;
+                                        transition: all .3s;
+
+                                        .search-dropdown__option {
+                                            display: block;
+                                            padding: 2px 24px;
+                                            color: $color-white;
+                                            transition: all .3s;
+                                        }
+                                        .search-dropdown__option.is-child {
+                                            padding-left: 36px;
+                                        }
+                                    }
+                                
+
+                            }
+                        }
+
+                        .header-search__results{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            background-color: $bg-secondary;
+                            border-radius: $rounded-normal;
+                            font-size: $search-results-fs;
+                            opacity: 0;
+                            visibility: hidden;
+                            transition: opacity .3s;
+
+                            .content-tabs{
+
+                                .content-tabs__item.active {
+                                    display: block;
+
+                                    .header-search__content-results {
+                                        display: flex;
+                                        gap: 80px;
+                                        padding: 90px 0 54px 0;
+                                        padding-left: 36px;
+
+                                        .header-search__left{
+                                            
+                                            .header-search__row:not(:last-child) {
+                                                margin-bottom: 36px;
+                                                
+                                                .list-featured {
+                                                    display: flex;
+                                                    flex-wrap: wrap;
+                                                    gap: 8px;
+
+                                                    .list-featured figure {
+                                                        margin-bottom: 12px;
+
+                                                        .list-featured img {
+                                                            display: block;
+                                                            width: 100%;
+                                                            border-radius: 4px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            .header-search__row{
+
+                                                .list-tags {
+                                                    display: flex;
+                                                    flex-wrap: wrap;
+                                                    gap: 12px;
+
+                                                    li {
+                                                        display: flex;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .header-search__right {
+                                            flex: 1;
+                                            min-width: 0;
+
+                                                .swiper-pointer-events and .slider-header{
+                                                touch-action: pan-y;
+                                                position: relative;
+                                                z-index: 0;
+                                                padding-right: 10%;
+                                                overflow: hidden;
+
+                                                .swiper-wrapper {
+                                                    position: relative;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    z-index: 1;
+                                                    display: flex;
+                                                    transition-property: transform;
+                                                    box-sizing: content-box;
+
+                                                    .slider-header .swiper-slide {
+                                                        width: 350px;
+
+                                                        .slider-header__figure {
+                                                            margin-bottom: 20px;
+                                                        }
+                                                        .slider-header__title {
+                                                                line-height: 130%;
+                                                                font-size: 1rem;
+                                                                font-weight: 300;
+                                                                color: $color-white;
+                                                        }
+                                                        
+                                                    }
+                                                }
+
+                                                .slider-header__nav {
+                                                    display: flex;
+                                                    justify-content: flex-end;
+
+                                                    .slider-header__btnav {
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                        width: 30px;
+                                                        height: 30px;
+                                                        fill: $color-white;
+                                                        cursor: pointer;
+                                                        transition: all .3s;
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+
+                                .content-tabs__item {
+                                    position: relative;
+                                    display: none;
+
+                                    .header-search__content-results {
+                                        display: flex;
+                                        gap: 80px;
+                                        padding: 90px 0 54px 0;
+                                        padding-left: 36px;
+
+                                        .header-search__row {
+                                            width: 100%;
+                                            padding-right: 36px;
+
+                                            .list-search-ac {
+                                                min-width: 500px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .header-main__right{
+                        display: flex;
+                        gap: 12px;
+                        height: $sf-height;
+                        margin-left: 20px;
+                        
+                        .header-main__user{
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            gap: 16px;
+                            .bt-dropdown-user{
+                                position: relative;
+                                display: flex;
+                                align-items: center;
+                                .bt-dropdown-user .circle-avatar {
+                                    font-size: 1.25em;
+                                    display: inline-block;
+                                    position: relative;
+                                }
+                            }
+                            .dropdown-user {
+                                $color-hover: rgba(255,255,255, 0.1);
+                                position: absolute;
+                                top: calc(100% + 12px);
+                                left: 0;
+                                width: 230px;
+                                padding: 20px 0;
+                                background: $bg-secondary;
+                                color: $color-white;
+                                border-radius: $rounded-normal;
+                                z-index: 2;
+                                transition: all .3s;
+                                opacity: 0;
+                                visibility: hidden;
+
+                                .dropdown-user:before {
+                                    content: "";
+                                    width: 44px;
+                                    height: 44px;
+                                    position: absolute;
+                                    top: -25px;
+                                }
+                            
+                                .dropdown-user__list{
+                                    padding: 16px 0;
+                                    border-bottom: 1px solid $color-hover;
+
+                                    .dropdown-user__link {
+                                        padding: 0 28px;
+                                        display: flex;
+                                        align-items: center;
+                                        gap: 8px;
+                                        color: $color-white;
+                                        transition: all .3s;
+
+                                        .budget {
+                                            $budget-height: 20px;
+                                            display: inline-block;
+                                            height: $budget-height;
+                                            padding: 0 10px;
+                                            line-height: $budget-height;
+                                            font-size: 10px;
+                                            border-radius: $budget-height;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .header-main__bts{
+                            display: flex;
+                            gap: 12px;
+                            margin-left: 8px;
+                            .button .button--rounded{
+                                font-weight: normal;
+                            }
+                            .button .button--outline--rounded{
+                                background: transparent;
+                                border: 1px solid $color-primary;
+                                color: $color-primary;
+                            }
+                        }
+                    }
+
+            }
+
+        }
+    
+    
+
+    

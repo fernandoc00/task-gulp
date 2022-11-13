@@ -1,0 +1,22 @@
+
+
+@mixin incluirInner{
+.inner{
+margin: 0 auto;
+padding: 0px $pad-inner;
+}
+}
+
+@mixin budged-tag-red{
+    $budget-tag-border: #ce6644;
+    border-color: #ce6644;
+    color: #ce6644;
+    }
+
+@mixin budged-tag-blue{
+    $budget-tag-border: #8eabc6;
+    border-color: #8eabc6;
+    color: #8eabc6;
+    }
+
+

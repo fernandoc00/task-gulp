@@ -1,0 +1,87 @@
+@import 'mixins';
+
+#footer{
+    display: block;
+    @include incluirInner;
+        .footer-top{
+            margin-bottom: clamp(40px,4vw,150px);
+            .footer__logo {
+                display: inline-flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: clamp(30px,4vw,60px);
+                
+                .footer__logo svg {
+                    fill: var(--color-primary);
+                }
+            }
+
+            .footer__wrapper{
+                display: flex;
+                .footer__grid{
+                    $grid-min: 18%;
+                    $menu-margin: clamp(10px, 4vw, 20px);
+                    flex: 1;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(var($grid-min), 1fr));
+                    grid-gap: 24px;
+            
+                    .footer__menu{
+                        font-weight: bold;
+                        line-height: normal;
+
+                        li:not(:last-child) {
+                            margin-bottom: $menu-margin;
+                        }
+                    }
+                    .box-featured{
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-bottom: auto;
+                        padding: clamp(20px,4vw,32px);
+                        background: #f3f3f3;
+                        border-radius: var($rounded-normal);
+                        line-height: 150%;
+
+                        .ico-svg {
+                            vertical-align: middle;
+                        }
+
+                    }
+                }
+            }
+        }
+        .footer__bottom{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 120px;
+            padding-top: clamp(24px,3vw,48px);
+            font-size: 14px;
+            font-weight: 400;
+            background-image: linear-gradient(to right, #222 0 10%, rgba(255, 255, 255, 0) 10%);
+            background-position: top;
+            background-size: 8px 1px;
+            background-repeat: repeat-x;
+        
+            .footer__left{
+                .footer__nav{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0 24px;
+                }
+            }
+            .footer__right{
+                .footer__nav{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0 24px;
+                }
+            }
+
+
+
+        }
+    
+}
